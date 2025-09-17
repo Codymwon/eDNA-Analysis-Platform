@@ -1,0 +1,1226 @@
+{
+  "success": true,
+  "results": [
+    {
+      "sequence_id": "seq_0000",
+      "sequence_length": 200,
+      "cluster": 0,
+      "annotation": {
+        "annotation": "Deep-sea Sponge (Porifera)",
+        "evidence": "Best hits to Demospongiae sequences, ~93% identity",
+        "action": "keep"
+      },
+      "confidence": 0.0113,
+      "action": "keep"
+    },
+    {
+      "sequence_id": "seq_0001",
+      "sequence_length": 200,
+      "cluster": 0,
+      "annotation": {
+        "annotation": "Deep-sea Sponge (Porifera)",
+        "evidence": "Best hits to Demospongiae sequences, ~93% identity",
+        "action": "keep"
+      },
+      "confidence": 0.0101,
+      "action": "keep"
+    },
+    {
+      "sequence_id": "seq_0002",
+      "sequence_length": 200,
+      "cluster": 0,
+      "annotation": {
+        "annotation": "Deep-sea Sponge (Porifera)",
+        "evidence": "Best hits to Demospongiae sequences, ~93% identity",
+        "action": "keep"
+      },
+      "confidence": 0.0168,
+      "action": "keep"
+    },
+    {
+      "sequence_id": "seq_0003",
+      "sequence_length": 200,
+      "cluster": 0,
+      "annotation": {
+        "annotation": "Deep-sea Sponge (Porifera)",
+        "evidence": "Best hits to Demospongiae sequences, ~93% identity",
+        "action": "keep"
+      },
+      "confidence": 0.0091,
+      "action": "keep"
+    },
+    {
+      "sequence_id": "seq_0004",
+      "sequence_length": 200,
+      "cluster": 0,
+      "annotation": {
+        "annotation": "Deep-sea Sponge (Porifera)",
+        "evidence": "Best hits to Demospongiae sequences, ~93% identity",
+        "action": "keep"
+      },
+      "confidence": 0.0184,
+      "action": "keep"
+    },
+    {
+      "sequence_id": "seq_0005",
+      "sequence_length": 200,
+      "cluster": 0,
+      "annotation": {
+        "annotation": "Deep-sea Sponge (Porifera)",
+        "evidence": "Best hits to Demospongiae sequences, ~93% identity",
+        "action": "keep"
+      },
+      "confidence": 0.0098,
+      "action": "keep"
+    },
+    {
+      "sequence_id": "seq_0006",
+      "sequence_length": 200,
+      "cluster": 0,
+      "annotation": {
+        "annotation": "Deep-sea Sponge (Porifera)",
+        "evidence": "Best hits to Demospongiae sequences, ~93% identity",
+        "action": "keep"
+      },
+      "confidence": 0.0071,
+      "action": "keep"
+    },
+    {
+      "sequence_id": "seq_0007",
+      "sequence_length": 200,
+      "cluster": 0,
+      "annotation": {
+        "annotation": "Deep-sea Sponge (Porifera)",
+        "evidence": "Best hits to Demospongiae sequences, ~93% identity",
+        "action": "keep"
+      },
+      "confidence": 0.027,
+      "action": "keep"
+    },
+    {
+      "sequence_id": "seq_0008",
+      "sequence_length": 200,
+      "cluster": 0,
+      "annotation": {
+        "annotation": "Deep-sea Sponge (Porifera)",
+        "evidence": "Best hits to Demospongiae sequences, ~93% identity",
+        "action": "keep"
+      },
+      "confidence": 0.0121,
+      "action": "keep"
+    },
+    {
+      "sequence_id": "seq_0009",
+      "sequence_length": 200,
+      "cluster": 0,
+      "annotation": {
+        "annotation": "Deep-sea Sponge (Porifera)",
+        "evidence": "Best hits to Demospongiae sequences, ~93% identity",
+        "action": "keep"
+      },
+      "confidence": 0.0051,
+      "action": "keep"
+    },
+    {
+      "sequence_id": "seq_0010",
+      "sequence_length": 200,
+      "cluster": 0,
+      "annotation": {
+        "annotation": "Deep-sea Sponge (Porifera)",
+        "evidence": "Best hits to Demospongiae sequences, ~93% identity",
+        "action": "keep"
+      },
+      "confidence": 0.0147,
+      "action": "keep"
+    },
+    {
+      "sequence_id": "seq_0011",
+      "sequence_length": 200,
+      "cluster": 0,
+      "annotation": {
+        "annotation": "Deep-sea Sponge (Porifera)",
+        "evidence": "Best hits to Demospongiae sequences, ~93% identity",
+        "action": "keep"
+      },
+      "confidence": 0.015,
+      "action": "keep"
+    },
+    {
+      "sequence_id": "seq_0012",
+      "sequence_length": 200,
+      "cluster": 0,
+      "annotation": {
+        "annotation": "Deep-sea Sponge (Porifera)",
+        "evidence": "Best hits to Demospongiae sequences, ~93% identity",
+        "action": "keep"
+      },
+      "confidence": 0.0202,
+      "action": "keep"
+    },
+    {
+      "sequence_id": "seq_0013",
+      "sequence_length": 200,
+      "cluster": 0,
+      "annotation": {
+        "annotation": "Deep-sea Sponge (Porifera)",
+        "evidence": "Best hits to Demospongiae sequences, ~93% identity",
+        "action": "keep"
+      },
+      "confidence": 0.0142,
+      "action": "keep"
+    },
+    {
+      "sequence_id": "seq_0014",
+      "sequence_length": 200,
+      "cluster": 0,
+      "annotation": {
+        "annotation": "Deep-sea Sponge (Porifera)",
+        "evidence": "Best hits to Demospongiae sequences, ~93% identity",
+        "action": "keep"
+      },
+      "confidence": 0.0139,
+      "action": "keep"
+    },
+    {
+      "sequence_id": "seq_0015",
+      "sequence_length": 200,
+      "cluster": 0,
+      "annotation": {
+        "annotation": "Deep-sea Sponge (Porifera)",
+        "evidence": "Best hits to Demospongiae sequences, ~93% identity",
+        "action": "keep"
+      },
+      "confidence": 0.018,
+      "action": "keep"
+    },
+    {
+      "sequence_id": "seq_0016",
+      "sequence_length": 200,
+      "cluster": 0,
+      "annotation": {
+        "annotation": "Deep-sea Sponge (Porifera)",
+        "evidence": "Best hits to Demospongiae sequences, ~93% identity",
+        "action": "keep"
+      },
+      "confidence": 0.0183,
+      "action": "keep"
+    },
+    {
+      "sequence_id": "seq_0017",
+      "sequence_length": 200,
+      "cluster": 0,
+      "annotation": {
+        "annotation": "Deep-sea Sponge (Porifera)",
+        "evidence": "Best hits to Demospongiae sequences, ~93% identity",
+        "action": "keep"
+      },
+      "confidence": 0.0187,
+      "action": "keep"
+    },
+    {
+      "sequence_id": "seq_0018",
+      "sequence_length": 200,
+      "cluster": 0,
+      "annotation": {
+        "annotation": "Deep-sea Sponge (Porifera)",
+        "evidence": "Best hits to Demospongiae sequences, ~93% identity",
+        "action": "keep"
+      },
+      "confidence": 0.0122,
+      "action": "keep"
+    },
+    {
+      "sequence_id": "seq_0019",
+      "sequence_length": 200,
+      "cluster": 0,
+      "annotation": {
+        "annotation": "Deep-sea Sponge (Porifera)",
+        "evidence": "Best hits to Demospongiae sequences, ~93% identity",
+        "action": "keep"
+      },
+      "confidence": 0.0094,
+      "action": "keep"
+    },
+    {
+      "sequence_id": "seq_0020",
+      "sequence_length": 200,
+      "cluster": 0,
+      "annotation": {
+        "annotation": "Deep-sea Sponge (Porifera)",
+        "evidence": "Best hits to Demospongiae sequences, ~93% identity",
+        "action": "keep"
+      },
+      "confidence": 0.0203,
+      "action": "keep"
+    },
+    {
+      "sequence_id": "seq_0021",
+      "sequence_length": 200,
+      "cluster": 0,
+      "annotation": {
+        "annotation": "Deep-sea Sponge (Porifera)",
+        "evidence": "Best hits to Demospongiae sequences, ~93% identity",
+        "action": "keep"
+      },
+      "confidence": 0.0069,
+      "action": "keep"
+    },
+    {
+      "sequence_id": "seq_0022",
+      "sequence_length": 200,
+      "cluster": 0,
+      "annotation": {
+        "annotation": "Deep-sea Sponge (Porifera)",
+        "evidence": "Best hits to Demospongiae sequences, ~93% identity",
+        "action": "keep"
+      },
+      "confidence": 0.0118,
+      "action": "keep"
+    },
+    {
+      "sequence_id": "seq_0023",
+      "sequence_length": 200,
+      "cluster": 0,
+      "annotation": {
+        "annotation": "Deep-sea Sponge (Porifera)",
+        "evidence": "Best hits to Demospongiae sequences, ~93% identity",
+        "action": "keep"
+      },
+      "confidence": 0.0185,
+      "action": "keep"
+    },
+    {
+      "sequence_id": "seq_0024",
+      "sequence_length": 200,
+      "cluster": 0,
+      "annotation": {
+        "annotation": "Deep-sea Sponge (Porifera)",
+        "evidence": "Best hits to Demospongiae sequences, ~93% identity",
+        "action": "keep"
+      },
+      "confidence": 0.0098,
+      "action": "keep"
+    },
+    {
+      "sequence_id": "seq_0025",
+      "sequence_length": 200,
+      "cluster": 0,
+      "annotation": {
+        "annotation": "Deep-sea Sponge (Porifera)",
+        "evidence": "Best hits to Demospongiae sequences, ~93% identity",
+        "action": "keep"
+      },
+      "confidence": 0.0158,
+      "action": "keep"
+    },
+    {
+      "sequence_id": "seq_0026",
+      "sequence_length": 200,
+      "cluster": 0,
+      "annotation": {
+        "annotation": "Deep-sea Sponge (Porifera)",
+        "evidence": "Best hits to Demospongiae sequences, ~93% identity",
+        "action": "keep"
+      },
+      "confidence": 0.0059,
+      "action": "keep"
+    },
+    {
+      "sequence_id": "seq_0027",
+      "sequence_length": 200,
+      "cluster": 0,
+      "annotation": {
+        "annotation": "Deep-sea Sponge (Porifera)",
+        "evidence": "Best hits to Demospongiae sequences, ~93% identity",
+        "action": "keep"
+      },
+      "confidence": 0.0131,
+      "action": "keep"
+    },
+    {
+      "sequence_id": "seq_0028",
+      "sequence_length": 200,
+      "cluster": 0,
+      "annotation": {
+        "annotation": "Deep-sea Sponge (Porifera)",
+        "evidence": "Best hits to Demospongiae sequences, ~93% identity",
+        "action": "keep"
+      },
+      "confidence": 0.0218,
+      "action": "keep"
+    },
+    {
+      "sequence_id": "seq_0029",
+      "sequence_length": 200,
+      "cluster": 0,
+      "annotation": {
+        "annotation": "Deep-sea Sponge (Porifera)",
+        "evidence": "Best hits to Demospongiae sequences, ~93% identity",
+        "action": "keep"
+      },
+      "confidence": 0.0104,
+      "action": "keep"
+    },
+    {
+      "sequence_id": "seq_0030",
+      "sequence_length": 200,
+      "cluster": 0,
+      "annotation": {
+        "annotation": "Deep-sea Sponge (Porifera)",
+        "evidence": "Best hits to Demospongiae sequences, ~93% identity",
+        "action": "keep"
+      },
+      "confidence": 0.0095,
+      "action": "keep"
+    },
+    {
+      "sequence_id": "seq_0031",
+      "sequence_length": 200,
+      "cluster": 0,
+      "annotation": {
+        "annotation": "Deep-sea Sponge (Porifera)",
+        "evidence": "Best hits to Demospongiae sequences, ~93% identity",
+        "action": "keep"
+      },
+      "confidence": 0.0062,
+      "action": "keep"
+    },
+    {
+      "sequence_id": "seq_0032",
+      "sequence_length": 200,
+      "cluster": 0,
+      "annotation": {
+        "annotation": "Deep-sea Sponge (Porifera)",
+        "evidence": "Best hits to Demospongiae sequences, ~93% identity",
+        "action": "keep"
+      },
+      "confidence": 0.0253,
+      "action": "keep"
+    },
+    {
+      "sequence_id": "seq_0033",
+      "sequence_length": 200,
+      "cluster": 0,
+      "annotation": {
+        "annotation": "Deep-sea Sponge (Porifera)",
+        "evidence": "Best hits to Demospongiae sequences, ~93% identity",
+        "action": "keep"
+      },
+      "confidence": 0.0143,
+      "action": "keep"
+    },
+    {
+      "sequence_id": "seq_0034",
+      "sequence_length": 200,
+      "cluster": 0,
+      "annotation": {
+        "annotation": "Deep-sea Sponge (Porifera)",
+        "evidence": "Best hits to Demospongiae sequences, ~93% identity",
+        "action": "keep"
+      },
+      "confidence": 0.0184,
+      "action": "keep"
+    },
+    {
+      "sequence_id": "seq_0035",
+      "sequence_length": 200,
+      "cluster": 0,
+      "annotation": {
+        "annotation": "Deep-sea Sponge (Porifera)",
+        "evidence": "Best hits to Demospongiae sequences, ~93% identity",
+        "action": "keep"
+      },
+      "confidence": 0.0126,
+      "action": "keep"
+    },
+    {
+      "sequence_id": "seq_0036",
+      "sequence_length": 200,
+      "cluster": 0,
+      "annotation": {
+        "annotation": "Deep-sea Sponge (Porifera)",
+        "evidence": "Best hits to Demospongiae sequences, ~93% identity",
+        "action": "keep"
+      },
+      "confidence": 0.0137,
+      "action": "keep"
+    },
+    {
+      "sequence_id": "seq_0037",
+      "sequence_length": 200,
+      "cluster": 0,
+      "annotation": {
+        "annotation": "Deep-sea Sponge (Porifera)",
+        "evidence": "Best hits to Demospongiae sequences, ~93% identity",
+        "action": "keep"
+      },
+      "confidence": 0.0144,
+      "action": "keep"
+    },
+    {
+      "sequence_id": "seq_0038",
+      "sequence_length": 200,
+      "cluster": 0,
+      "annotation": {
+        "annotation": "Deep-sea Sponge (Porifera)",
+        "evidence": "Best hits to Demospongiae sequences, ~93% identity",
+        "action": "keep"
+      },
+      "confidence": 0.0303,
+      "action": "keep"
+    },
+    {
+      "sequence_id": "seq_0039",
+      "sequence_length": 200,
+      "cluster": 0,
+      "annotation": {
+        "annotation": "Deep-sea Sponge (Porifera)",
+        "evidence": "Best hits to Demospongiae sequences, ~93% identity",
+        "action": "keep"
+      },
+      "confidence": 0.0,
+      "action": "keep"
+    },
+    {
+      "sequence_id": "seq_0040",
+      "sequence_length": 200,
+      "cluster": 0,
+      "annotation": {
+        "annotation": "Deep-sea Sponge (Porifera)",
+        "evidence": "Best hits to Demospongiae sequences, ~93% identity",
+        "action": "keep"
+      },
+      "confidence": 0.0166,
+      "action": "keep"
+    },
+    {
+      "sequence_id": "seq_0041",
+      "sequence_length": 200,
+      "cluster": 0,
+      "annotation": {
+        "annotation": "Deep-sea Sponge (Porifera)",
+        "evidence": "Best hits to Demospongiae sequences, ~93% identity",
+        "action": "keep"
+      },
+      "confidence": 0.0136,
+      "action": "keep"
+    },
+    {
+      "sequence_id": "seq_0042",
+      "sequence_length": 200,
+      "cluster": 0,
+      "annotation": {
+        "annotation": "Deep-sea Sponge (Porifera)",
+        "evidence": "Best hits to Demospongiae sequences, ~93% identity",
+        "action": "keep"
+      },
+      "confidence": 0.0182,
+      "action": "keep"
+    },
+    {
+      "sequence_id": "seq_0043",
+      "sequence_length": 200,
+      "cluster": 0,
+      "annotation": {
+        "annotation": "Deep-sea Sponge (Porifera)",
+        "evidence": "Best hits to Demospongiae sequences, ~93% identity",
+        "action": "keep"
+      },
+      "confidence": 0.0109,
+      "action": "keep"
+    },
+    {
+      "sequence_id": "seq_0044",
+      "sequence_length": 200,
+      "cluster": 0,
+      "annotation": {
+        "annotation": "Deep-sea Sponge (Porifera)",
+        "evidence": "Best hits to Demospongiae sequences, ~93% identity",
+        "action": "keep"
+      },
+      "confidence": 0.0127,
+      "action": "keep"
+    },
+    {
+      "sequence_id": "seq_0045",
+      "sequence_length": 200,
+      "cluster": 0,
+      "annotation": {
+        "annotation": "Deep-sea Sponge (Porifera)",
+        "evidence": "Best hits to Demospongiae sequences, ~93% identity",
+        "action": "keep"
+      },
+      "confidence": 0.0195,
+      "action": "keep"
+    },
+    {
+      "sequence_id": "seq_0046",
+      "sequence_length": 200,
+      "cluster": 0,
+      "annotation": {
+        "annotation": "Deep-sea Sponge (Porifera)",
+        "evidence": "Best hits to Demospongiae sequences, ~93% identity",
+        "action": "keep"
+      },
+      "confidence": 0.0071,
+      "action": "keep"
+    },
+    {
+      "sequence_id": "seq_0047",
+      "sequence_length": 200,
+      "cluster": 0,
+      "annotation": {
+        "annotation": "Deep-sea Sponge (Porifera)",
+        "evidence": "Best hits to Demospongiae sequences, ~93% identity",
+        "action": "keep"
+      },
+      "confidence": 0.0062,
+      "action": "keep"
+    },
+    {
+      "sequence_id": "seq_0048",
+      "sequence_length": 200,
+      "cluster": 0,
+      "annotation": {
+        "annotation": "Deep-sea Sponge (Porifera)",
+        "evidence": "Best hits to Demospongiae sequences, ~93% identity",
+        "action": "keep"
+      },
+      "confidence": 0.013,
+      "action": "keep"
+    },
+    {
+      "sequence_id": "seq_0049",
+      "sequence_length": 200,
+      "cluster": 0,
+      "annotation": {
+        "annotation": "Deep-sea Sponge (Porifera)",
+        "evidence": "Best hits to Demospongiae sequences, ~93% identity",
+        "action": "keep"
+      },
+      "confidence": 0.0202,
+      "action": "keep"
+    },
+    {
+      "sequence_id": "seq_0050",
+      "sequence_length": 200,
+      "cluster": 0,
+      "annotation": {
+        "annotation": "Deep-sea Sponge (Porifera)",
+        "evidence": "Best hits to Demospongiae sequences, ~93% identity",
+        "action": "keep"
+      },
+      "confidence": 0.0236,
+      "action": "keep"
+    },
+    {
+      "sequence_id": "seq_0051",
+      "sequence_length": 200,
+      "cluster": 0,
+      "annotation": {
+        "annotation": "Deep-sea Sponge (Porifera)",
+        "evidence": "Best hits to Demospongiae sequences, ~93% identity",
+        "action": "keep"
+      },
+      "confidence": 0.0243,
+      "action": "keep"
+    },
+    {
+      "sequence_id": "seq_0052",
+      "sequence_length": 200,
+      "cluster": 0,
+      "annotation": {
+        "annotation": "Deep-sea Sponge (Porifera)",
+        "evidence": "Best hits to Demospongiae sequences, ~93% identity",
+        "action": "keep"
+      },
+      "confidence": 0.0125,
+      "action": "keep"
+    },
+    {
+      "sequence_id": "seq_0053",
+      "sequence_length": 200,
+      "cluster": 0,
+      "annotation": {
+        "annotation": "Deep-sea Sponge (Porifera)",
+        "evidence": "Best hits to Demospongiae sequences, ~93% identity",
+        "action": "keep"
+      },
+      "confidence": 0.0017,
+      "action": "keep"
+    },
+    {
+      "sequence_id": "seq_0054",
+      "sequence_length": 200,
+      "cluster": 0,
+      "annotation": {
+        "annotation": "Deep-sea Sponge (Porifera)",
+        "evidence": "Best hits to Demospongiae sequences, ~93% identity",
+        "action": "keep"
+      },
+      "confidence": 0.0212,
+      "action": "keep"
+    },
+    {
+      "sequence_id": "seq_0055",
+      "sequence_length": 200,
+      "cluster": 0,
+      "annotation": {
+        "annotation": "Deep-sea Sponge (Porifera)",
+        "evidence": "Best hits to Demospongiae sequences, ~93% identity",
+        "action": "keep"
+      },
+      "confidence": 0.0093,
+      "action": "keep"
+    },
+    {
+      "sequence_id": "seq_0056",
+      "sequence_length": 200,
+      "cluster": 0,
+      "annotation": {
+        "annotation": "Deep-sea Sponge (Porifera)",
+        "evidence": "Best hits to Demospongiae sequences, ~93% identity",
+        "action": "keep"
+      },
+      "confidence": 0.0119,
+      "action": "keep"
+    },
+    {
+      "sequence_id": "seq_0057",
+      "sequence_length": 200,
+      "cluster": 0,
+      "annotation": {
+        "annotation": "Deep-sea Sponge (Porifera)",
+        "evidence": "Best hits to Demospongiae sequences, ~93% identity",
+        "action": "keep"
+      },
+      "confidence": 0.0115,
+      "action": "keep"
+    },
+    {
+      "sequence_id": "seq_0058",
+      "sequence_length": 200,
+      "cluster": 0,
+      "annotation": {
+        "annotation": "Deep-sea Sponge (Porifera)",
+        "evidence": "Best hits to Demospongiae sequences, ~93% identity",
+        "action": "keep"
+      },
+      "confidence": 0.0152,
+      "action": "keep"
+    },
+    {
+      "sequence_id": "seq_0059",
+      "sequence_length": 200,
+      "cluster": 0,
+      "annotation": {
+        "annotation": "Deep-sea Sponge (Porifera)",
+        "evidence": "Best hits to Demospongiae sequences, ~93% identity",
+        "action": "keep"
+      },
+      "confidence": 0.0155,
+      "action": "keep"
+    },
+    {
+      "sequence_id": "seq_0060",
+      "sequence_length": 200,
+      "cluster": 0,
+      "annotation": {
+        "annotation": "Deep-sea Sponge (Porifera)",
+        "evidence": "Best hits to Demospongiae sequences, ~93% identity",
+        "action": "keep"
+      },
+      "confidence": 0.0104,
+      "action": "keep"
+    },
+    {
+      "sequence_id": "seq_0061",
+      "sequence_length": 200,
+      "cluster": 0,
+      "annotation": {
+        "annotation": "Deep-sea Sponge (Porifera)",
+        "evidence": "Best hits to Demospongiae sequences, ~93% identity",
+        "action": "keep"
+      },
+      "confidence": 0.0086,
+      "action": "keep"
+    },
+    {
+      "sequence_id": "seq_0062",
+      "sequence_length": 200,
+      "cluster": 0,
+      "annotation": {
+        "annotation": "Deep-sea Sponge (Porifera)",
+        "evidence": "Best hits to Demospongiae sequences, ~93% identity",
+        "action": "keep"
+      },
+      "confidence": 0.0093,
+      "action": "keep"
+    },
+    {
+      "sequence_id": "seq_0063",
+      "sequence_length": 200,
+      "cluster": 0,
+      "annotation": {
+        "annotation": "Deep-sea Sponge (Porifera)",
+        "evidence": "Best hits to Demospongiae sequences, ~93% identity",
+        "action": "keep"
+      },
+      "confidence": 0.0152,
+      "action": "keep"
+    },
+    {
+      "sequence_id": "seq_0064",
+      "sequence_length": 200,
+      "cluster": 0,
+      "annotation": {
+        "annotation": "Deep-sea Sponge (Porifera)",
+        "evidence": "Best hits to Demospongiae sequences, ~93% identity",
+        "action": "keep"
+      },
+      "confidence": 0.0328,
+      "action": "keep"
+    },
+    {
+      "sequence_id": "seq_0065",
+      "sequence_length": 200,
+      "cluster": 0,
+      "annotation": {
+        "annotation": "Deep-sea Sponge (Porifera)",
+        "evidence": "Best hits to Demospongiae sequences, ~93% identity",
+        "action": "keep"
+      },
+      "confidence": 0.0111,
+      "action": "keep"
+    },
+    {
+      "sequence_id": "seq_0066",
+      "sequence_length": 200,
+      "cluster": 0,
+      "annotation": {
+        "annotation": "Deep-sea Sponge (Porifera)",
+        "evidence": "Best hits to Demospongiae sequences, ~93% identity",
+        "action": "keep"
+      },
+      "confidence": 0.0167,
+      "action": "keep"
+    },
+    {
+      "sequence_id": "seq_0067",
+      "sequence_length": 200,
+      "cluster": 0,
+      "annotation": {
+        "annotation": "Deep-sea Sponge (Porifera)",
+        "evidence": "Best hits to Demospongiae sequences, ~93% identity",
+        "action": "keep"
+      },
+      "confidence": 0.011,
+      "action": "keep"
+    },
+    {
+      "sequence_id": "seq_0068",
+      "sequence_length": 200,
+      "cluster": 0,
+      "annotation": {
+        "annotation": "Deep-sea Sponge (Porifera)",
+        "evidence": "Best hits to Demospongiae sequences, ~93% identity",
+        "action": "keep"
+      },
+      "confidence": 0.0113,
+      "action": "keep"
+    },
+    {
+      "sequence_id": "seq_0069",
+      "sequence_length": 200,
+      "cluster": 0,
+      "annotation": {
+        "annotation": "Deep-sea Sponge (Porifera)",
+        "evidence": "Best hits to Demospongiae sequences, ~93% identity",
+        "action": "keep"
+      },
+      "confidence": 0.0087,
+      "action": "keep"
+    },
+    {
+      "sequence_id": "seq_0070",
+      "sequence_length": 200,
+      "cluster": 0,
+      "annotation": {
+        "annotation": "Deep-sea Sponge (Porifera)",
+        "evidence": "Best hits to Demospongiae sequences, ~93% identity",
+        "action": "keep"
+      },
+      "confidence": 0.0167,
+      "action": "keep"
+    },
+    {
+      "sequence_id": "seq_0071",
+      "sequence_length": 200,
+      "cluster": 0,
+      "annotation": {
+        "annotation": "Deep-sea Sponge (Porifera)",
+        "evidence": "Best hits to Demospongiae sequences, ~93% identity",
+        "action": "keep"
+      },
+      "confidence": 0.0247,
+      "action": "keep"
+    },
+    {
+      "sequence_id": "seq_0072",
+      "sequence_length": 200,
+      "cluster": 0,
+      "annotation": {
+        "annotation": "Deep-sea Sponge (Porifera)",
+        "evidence": "Best hits to Demospongiae sequences, ~93% identity",
+        "action": "keep"
+      },
+      "confidence": 0.0045,
+      "action": "keep"
+    },
+    {
+      "sequence_id": "seq_0073",
+      "sequence_length": 200,
+      "cluster": 0,
+      "annotation": {
+        "annotation": "Deep-sea Sponge (Porifera)",
+        "evidence": "Best hits to Demospongiae sequences, ~93% identity",
+        "action": "keep"
+      },
+      "confidence": 0.0209,
+      "action": "keep"
+    },
+    {
+      "sequence_id": "seq_0074",
+      "sequence_length": 200,
+      "cluster": 0,
+      "annotation": {
+        "annotation": "Deep-sea Sponge (Porifera)",
+        "evidence": "Best hits to Demospongiae sequences, ~93% identity",
+        "action": "keep"
+      },
+      "confidence": 0.0081,
+      "action": "keep"
+    },
+    {
+      "sequence_id": "seq_0075",
+      "sequence_length": 200,
+      "cluster": 0,
+      "annotation": {
+        "annotation": "Deep-sea Sponge (Porifera)",
+        "evidence": "Best hits to Demospongiae sequences, ~93% identity",
+        "action": "keep"
+      },
+      "confidence": 0.0034,
+      "action": "keep"
+    },
+    {
+      "sequence_id": "seq_0076",
+      "sequence_length": 200,
+      "cluster": 0,
+      "annotation": {
+        "annotation": "Deep-sea Sponge (Porifera)",
+        "evidence": "Best hits to Demospongiae sequences, ~93% identity",
+        "action": "keep"
+      },
+      "confidence": 0.0129,
+      "action": "keep"
+    },
+    {
+      "sequence_id": "seq_0077",
+      "sequence_length": 200,
+      "cluster": 0,
+      "annotation": {
+        "annotation": "Deep-sea Sponge (Porifera)",
+        "evidence": "Best hits to Demospongiae sequences, ~93% identity",
+        "action": "keep"
+      },
+      "confidence": 0.0059,
+      "action": "keep"
+    },
+    {
+      "sequence_id": "seq_0078",
+      "sequence_length": 200,
+      "cluster": 0,
+      "annotation": {
+        "annotation": "Deep-sea Sponge (Porifera)",
+        "evidence": "Best hits to Demospongiae sequences, ~93% identity",
+        "action": "keep"
+      },
+      "confidence": 0.0101,
+      "action": "keep"
+    },
+    {
+      "sequence_id": "seq_0079",
+      "sequence_length": 200,
+      "cluster": 0,
+      "annotation": {
+        "annotation": "Deep-sea Sponge (Porifera)",
+        "evidence": "Best hits to Demospongiae sequences, ~93% identity",
+        "action": "keep"
+      },
+      "confidence": 0.0161,
+      "action": "keep"
+    },
+    {
+      "sequence_id": "seq_0080",
+      "sequence_length": 200,
+      "cluster": 0,
+      "annotation": {
+        "annotation": "Deep-sea Sponge (Porifera)",
+        "evidence": "Best hits to Demospongiae sequences, ~93% identity",
+        "action": "keep"
+      },
+      "confidence": 0.0144,
+      "action": "keep"
+    },
+    {
+      "sequence_id": "seq_0081",
+      "sequence_length": 200,
+      "cluster": 0,
+      "annotation": {
+        "annotation": "Deep-sea Sponge (Porifera)",
+        "evidence": "Best hits to Demospongiae sequences, ~93% identity",
+        "action": "keep"
+      },
+      "confidence": 0.0224,
+      "action": "keep"
+    },
+    {
+      "sequence_id": "seq_0082",
+      "sequence_length": 200,
+      "cluster": 0,
+      "annotation": {
+        "annotation": "Deep-sea Sponge (Porifera)",
+        "evidence": "Best hits to Demospongiae sequences, ~93% identity",
+        "action": "keep"
+      },
+      "confidence": 0.0204,
+      "action": "keep"
+    },
+    {
+      "sequence_id": "seq_0083",
+      "sequence_length": 200,
+      "cluster": 0,
+      "annotation": {
+        "annotation": "Deep-sea Sponge (Porifera)",
+        "evidence": "Best hits to Demospongiae sequences, ~93% identity",
+        "action": "keep"
+      },
+      "confidence": 0.0115,
+      "action": "keep"
+    },
+    {
+      "sequence_id": "seq_0084",
+      "sequence_length": 200,
+      "cluster": 0,
+      "annotation": {
+        "annotation": "Deep-sea Sponge (Porifera)",
+        "evidence": "Best hits to Demospongiae sequences, ~93% identity",
+        "action": "keep"
+      },
+      "confidence": 0.0126,
+      "action": "keep"
+    },
+    {
+      "sequence_id": "seq_0085",
+      "sequence_length": 200,
+      "cluster": 0,
+      "annotation": {
+        "annotation": "Deep-sea Sponge (Porifera)",
+        "evidence": "Best hits to Demospongiae sequences, ~93% identity",
+        "action": "keep"
+      },
+      "confidence": 0.0036,
+      "action": "keep"
+    },
+    {
+      "sequence_id": "seq_0086",
+      "sequence_length": 200,
+      "cluster": 0,
+      "annotation": {
+        "annotation": "Deep-sea Sponge (Porifera)",
+        "evidence": "Best hits to Demospongiae sequences, ~93% identity",
+        "action": "keep"
+      },
+      "confidence": 0.0217,
+      "action": "keep"
+    },
+    {
+      "sequence_id": "seq_0087",
+      "sequence_length": 200,
+      "cluster": 0,
+      "annotation": {
+        "annotation": "Deep-sea Sponge (Porifera)",
+        "evidence": "Best hits to Demospongiae sequences, ~93% identity",
+        "action": "keep"
+      },
+      "confidence": 0.003,
+      "action": "keep"
+    },
+    {
+      "sequence_id": "seq_0088",
+      "sequence_length": 200,
+      "cluster": 0,
+      "annotation": {
+        "annotation": "Deep-sea Sponge (Porifera)",
+        "evidence": "Best hits to Demospongiae sequences, ~93% identity",
+        "action": "keep"
+      },
+      "confidence": 0.0109,
+      "action": "keep"
+    },
+    {
+      "sequence_id": "seq_0089",
+      "sequence_length": 200,
+      "cluster": 0,
+      "annotation": {
+        "annotation": "Deep-sea Sponge (Porifera)",
+        "evidence": "Best hits to Demospongiae sequences, ~93% identity",
+        "action": "keep"
+      },
+      "confidence": 0.0089,
+      "action": "keep"
+    },
+    {
+      "sequence_id": "seq_0090",
+      "sequence_length": 200,
+      "cluster": 0,
+      "annotation": {
+        "annotation": "Deep-sea Sponge (Porifera)",
+        "evidence": "Best hits to Demospongiae sequences, ~93% identity",
+        "action": "keep"
+      },
+      "confidence": 0.0103,
+      "action": "keep"
+    },
+    {
+      "sequence_id": "seq_0091",
+      "sequence_length": 200,
+      "cluster": 0,
+      "annotation": {
+        "annotation": "Deep-sea Sponge (Porifera)",
+        "evidence": "Best hits to Demospongiae sequences, ~93% identity",
+        "action": "keep"
+      },
+      "confidence": 0.0194,
+      "action": "keep"
+    },
+    {
+      "sequence_id": "seq_0092",
+      "sequence_length": 200,
+      "cluster": 0,
+      "annotation": {
+        "annotation": "Deep-sea Sponge (Porifera)",
+        "evidence": "Best hits to Demospongiae sequences, ~93% identity",
+        "action": "keep"
+      },
+      "confidence": 0.0078,
+      "action": "keep"
+    },
+    {
+      "sequence_id": "seq_0093",
+      "sequence_length": 200,
+      "cluster": 0,
+      "annotation": {
+        "annotation": "Deep-sea Sponge (Porifera)",
+        "evidence": "Best hits to Demospongiae sequences, ~93% identity",
+        "action": "keep"
+      },
+      "confidence": 0.0146,
+      "action": "keep"
+    },
+    {
+      "sequence_id": "seq_0094",
+      "sequence_length": 200,
+      "cluster": 0,
+      "annotation": {
+        "annotation": "Deep-sea Sponge (Porifera)",
+        "evidence": "Best hits to Demospongiae sequences, ~93% identity",
+        "action": "keep"
+      },
+      "confidence": 0.0021,
+      "action": "keep"
+    },
+    {
+      "sequence_id": "seq_0095",
+      "sequence_length": 200,
+      "cluster": 0,
+      "annotation": {
+        "annotation": "Deep-sea Sponge (Porifera)",
+        "evidence": "Best hits to Demospongiae sequences, ~93% identity",
+        "action": "keep"
+      },
+      "confidence": 0.0048,
+      "action": "keep"
+    },
+    {
+      "sequence_id": "seq_0096",
+      "sequence_length": 200,
+      "cluster": 0,
+      "annotation": {
+        "annotation": "Deep-sea Sponge (Porifera)",
+        "evidence": "Best hits to Demospongiae sequences, ~93% identity",
+        "action": "keep"
+      },
+      "confidence": 0.017,
+      "action": "keep"
+    },
+    {
+      "sequence_id": "seq_0097",
+      "sequence_length": 200,
+      "cluster": 0,
+      "annotation": {
+        "annotation": "Deep-sea Sponge (Porifera)",
+        "evidence": "Best hits to Demospongiae sequences, ~93% identity",
+        "action": "keep"
+      },
+      "confidence": 0.0183,
+      "action": "keep"
+    },
+    {
+      "sequence_id": "seq_0098",
+      "sequence_length": 200,
+      "cluster": 0,
+      "annotation": {
+        "annotation": "Deep-sea Sponge (Porifera)",
+        "evidence": "Best hits to Demospongiae sequences, ~93% identity",
+        "action": "keep"
+      },
+      "confidence": 0.0203,
+      "action": "keep"
+    },
+    {
+      "sequence_id": "seq_0099",
+      "sequence_length": 200,
+      "cluster": 0,
+      "annotation": {
+        "annotation": "Deep-sea Sponge (Porifera)",
+        "evidence": "Best hits to Demospongiae sequences, ~93% identity",
+        "action": "keep"
+      },
+      "confidence": 0.0174,
+      "action": "keep"
+    }
+  ],
+  "abundance_summary": [
+    {
+      "cluster": 0,
+      "annotation": {
+        "annotation": "Deep-sea Sponge (Porifera)",
+        "evidence": "Best hits to Demospongiae sequences, ~93% identity",
+        "action": "keep"
+      },
+      "count": 100,
+      "percentage": 100.0,
+      "action": "keep"
+    }
+  ],
+  "diversity_metrics": {
+    "total_sequences": 100,
+    "unique_clusters": 1,
+    "shannon_diversity": -0.0,
+    "simpson_diversity": 0.0,
+    "average_confidence": 0.0136
+  },
+  "timestamp": "2025-09-18T03:12:17.718764"
+}

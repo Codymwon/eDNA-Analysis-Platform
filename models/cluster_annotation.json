@@ -1,0 +1,52 @@
+{
+  "0": {
+    "annotation": "Deep-sea Sponge (Porifera)",
+    "evidence": "Best hits to Demospongiae sequences, ~93% identity",
+    "action": "keep"
+  },
+  "1": {
+    "annotation": "Uncertain Protist (possible Alveolata)",
+    "evidence": "Top representatives matched to uncultured Alveolate sequences with 85–90% identity",
+    "action": "review"
+  },
+  "2": {
+    "annotation": "Marine Fungi (Ascomycota, deep-sea associated)",
+    "evidence": "Best hits to environmental Ascomycota sequences, 92–95% identity",
+    "action": "keep"
+  },
+  "3": {
+    "annotation": "Novel Eukaryote — unclassified metazoan",
+    "evidence": "No strong matches (>85%) in BLAST, possible novel lineage",
+    "action": "highlight_as_novel"
+  },
+  "4": {
+    "annotation": "Environmental Protist (Ciliophora)",
+    "evidence": "Moderate matches to Ciliate sequences, 88–92% identity",
+    "action": "keep"
+  },
+  "5": {
+    "annotation": "Marine Algae (Chlorophyta)",
+    "evidence": "Representatives aligned to green algae sequences, 90–95% identity",
+    "action": "keep"
+  },
+  "6": {
+    "annotation": "Likely Human contamination (Homo sapiens)",
+    "evidence": "3 representatives top BLAST hits to Homo sapiens, pident ~99%, coverage ~100%",
+    "action": "exclude"
+  },
+  "7": {
+    "annotation": "Marine Invertebrate (possible Annelida)",
+    "evidence": "Top hits to polychaete worms (marine annelids), 90–93% identity",
+    "action": "keep"
+  },
+  "8": {
+    "annotation": "Novel Protist — low similarity to reference",
+    "evidence": "Best hits below 80% identity, possibly novel protist group",
+    "action": "highlight_as_novel"
+  },
+  "9": {
+    "annotation": "Environmental Dinoflagellate (Dinophyceae)",
+    "evidence": "Matches to uncultured dinoflagellate clones, 92% identity",
+    "action": "keep"
+  }
+}
