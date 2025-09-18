@@ -1,0 +1,110 @@
+{
+  "success": true,
+  "results": [
+    {
+      "sequence_id": "NC_012920.1",
+      "sequence_length": 310,
+      "cluster": 0,
+      "annotation": "Deep-sea Sponge (Porifera)",
+      "confidence": 0.7813,
+      "action": "keep"
+    },
+    {
+      "sequence_id": "NC_005089.1",
+      "sequence_length": 310,
+      "cluster": 0,
+      "annotation": "Deep-sea Sponge (Porifera)",
+      "confidence": 0.786,
+      "action": "keep"
+    },
+    {
+      "sequence_id": "NC_000932.1",
+      "sequence_length": 310,
+      "cluster": 0,
+      "annotation": "Deep-sea Sponge (Porifera)",
+      "confidence": 0.7707,
+      "action": "keep"
+    },
+    {
+      "sequence_id": "NC_001133.9",
+      "sequence_length": 310,
+      "cluster": 0,
+      "annotation": "Deep-sea Sponge (Porifera)",
+      "confidence": 0.6213,
+      "action": "keep"
+    },
+    {
+      "sequence_id": "NC_001224.1",
+      "sequence_length": 310,
+      "cluster": 0,
+      "annotation": "Deep-sea Sponge (Porifera)",
+      "confidence": 0.7806,
+      "action": "keep"
+    },
+    {
+      "sequence_id": "NC_001322.1",
+      "sequence_length": 310,
+      "cluster": 0,
+      "annotation": "Deep-sea Sponge (Porifera)",
+      "confidence": 0.5625,
+      "action": "keep"
+    },
+    {
+      "sequence_id": "NC_003070.9",
+      "sequence_length": 310,
+      "cluster": 0,
+      "annotation": "Deep-sea Sponge (Porifera)",
+      "confidence": 0.4938,
+      "action": "keep"
+    },
+    {
+      "sequence_id": "NC_016845.1",
+      "sequence_length": 310,
+      "cluster": 0,
+      "annotation": "Deep-sea Sponge (Porifera)",
+      "confidence": 0.3315,
+      "action": "keep"
+    },
+    {
+      "sequence_id": "NC_001573.1",
+      "sequence_length": 310,
+      "cluster": 0,
+      "annotation": "Deep-sea Sponge (Porifera)",
+      "confidence": 0.0046,
+      "action": "keep"
+    },
+    {
+      "sequence_id": "NC_000913.3",
+      "sequence_length": 310,
+      "cluster": 0,
+      "annotation": "Deep-sea Sponge (Porifera)",
+      "confidence": 0.0,
+      "action": "keep"
+    },
+    {
+      "sequence_id": "NC_007942.5",
+      "sequence_length": 310,
+      "cluster": 0,
+      "annotation": "Deep-sea Sponge (Porifera)",
+      "confidence": 0.6413,
+      "action": "keep"
+    }
+  ],
+  "abundance_summary": [
+    {
+      "cluster": 0,
+      "annotation": "Deep-sea Sponge (Porifera)",
+      "count": 11,
+      "percentage": 100.0,
+      "action": "keep"
+    }
+  ],
+  "diversity_metrics": {
+    "total_sequences": 11,
+    "unique_clusters": 1,
+    "shannon_diversity": -0.0,
+    "simpson_diversity": 0.0,
+    "average_confidence": 0.5249
+  },
+  "timestamp": "2025-09-18T09:45:07.791445"
+}

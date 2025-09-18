@@ -102,29 +102,43 @@ def process_fasta(filepath):
         
         # Prepare results
         results = []
-        for i, (record, label, confidence) in enumerate(zip(seq_records, labels, confidences)):
-            annotation = cluster_annotation.get(str(label), f"Unknown_{label}")
+        for record, label, confidence in zip(seq_records, labels, confidences):
+            cluster_info = cluster_annotation.get(str(label), {})
+            if isinstance(cluster_info, dict):
+                annotation = cluster_info.get('annotation', f"Unknown_{label}")
+                action = cluster_info.get('action', 'unknown')
+            else:
+                annotation = cluster_info if cluster_info else f"Unknown_{label}"
+                action = 'unknown'
+
             results.append({
                 'sequence_id': record['id'],
                 'sequence_length': record['length'],
                 'cluster': int(label),
                 'annotation': annotation,
                 'confidence': round(float(confidence), 4),
-                'action': cluster_annotation.get(str(label), {}).get('action', 'unknown') if isinstance(cluster_annotation.get(str(label)), dict) else 'unknown'
+                'action': action
             })
         
         # Calculate abundance summary
         label_counts = Counter(labels)
         abundance_summary = []
         for cluster_id, count in label_counts.items():
-            annotation = cluster_annotation.get(str(cluster_id), f"Unknown_{cluster_id}")
+            cluster_info = cluster_annotation.get(str(cluster_id), {})
+            if isinstance(cluster_info, dict):
+                annotation = cluster_info.get('annotation', f"Unknown_{cluster_id}")
+                action = cluster_info.get('action', 'unknown')
+            else:
+                annotation = cluster_info if cluster_info else f"Unknown_{cluster_id}"
+                action = 'unknown'
+            
             percentage = (count / len(sequences)) * 100
             abundance_summary.append({
                 'cluster': int(cluster_id),
                 'annotation': annotation,
                 'count': int(count),
                 'percentage': round(percentage, 2),
-                'action': cluster_annotation.get(str(cluster_id), {}).get('action', 'unknown') if isinstance(cluster_annotation.get(str(cluster_id)), dict) else 'unknown'
+                'action': action
             })
         
         # Sort abundance summary by count

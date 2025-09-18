@@ -708,8 +708,6 @@
             // Display metrics
             document.getElementById('totalSequences').textContent = data.diversity_metrics.total_sequences;
             document.getElementById('uniqueClusters').textContent = data.diversity_metrics.unique_clusters;
-            document.getElementById('shannonDiversity').textContent = data.diversity_metrics.shannon_diversity.toFixed(3);
-            document.getElementById('simpsonDiversity').textContent = data.diversity_metrics.simpson_diversity.toFixed(3);
             document.getElementById('avgConfidence').textContent = (data.diversity_metrics.average_confidence * 100).toFixed(1) + '%';
 
             // Display abundance chart
