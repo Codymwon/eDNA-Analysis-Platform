@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>eDNA Biodiversity Analysis Platform</title>
+    <title>Deep-Sea eDNA Biodiversity Explorer</title>
     <style>
         * {
             margin: 0;
@@ -12,94 +12,266 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 25%, #334155 100%);
             min-height: 100vh;
-            color: #333;
+            color: #f8fafc;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Animated background particles */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(2px 2px at 20px 30px, rgba(59, 130, 246, 0.3), transparent),
+                radial-gradient(2px 2px at 40px 70px, rgba(147, 197, 253, 0.2), transparent),
+                radial-gradient(1px 1px at 90px 40px, rgba(99, 102, 241, 0.4), transparent),
+                radial-gradient(1px 1px at 130px 80px, rgba(34, 197, 94, 0.2), transparent),
+                radial-gradient(2px 2px at 160px 30px, rgba(168, 85, 247, 0.3), transparent);
+            background-repeat: repeat;
+            background-size: 200px 200px;
+            animation: drift 20s linear infinite;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        @keyframes drift {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(-200px, -200px); }
         }
 
         .container {
-            max-width: 1400px;
+            max-width: 1600px;
             margin: 0 auto;
             padding: 20px;
+            position: relative;
+            z-index: 1;
         }
 
+        /* Navigation Bar */
+        .nav-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            border-radius: 16px;
+            padding: 16px 24px;
+            margin-bottom: 32px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.4em;
+            font-weight: 700;
+            color: #3b82f6;
+        }
+
+        .nav-brand::before {
+            content: '🧬';
+            font-size: 1.2em;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 8px;
+        }
+
+        .nav-link {
+            padding: 8px 20px;
+            background: transparent;
+            border: 1px solid transparent;
+            border-radius: 8px;
+            color: #cbd5e1;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            background: rgba(59, 130, 246, 0.1);
+            border-color: rgba(59, 130, 246, 0.3);
+            color: #3b82f6;
+        }
+
+        /* Header */
         header {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 30px;
+            text-align: center;
+            padding: 60px 20px;
+            margin-bottom: 40px;
+        }
+
+        .main-title {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            background: linear-gradient(135deg, #f8fafc 0%, #3b82f6 50%, #06b6d4 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 16px;
+            letter-spacing: -0.02em;
+        }
+
+        .subtitle {
+            font-size: clamp(1rem, 2vw, 1.3rem);
+            color: #94a3b8;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            line-height: 1.6;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-primary, .cta-secondary {
+            padding: 16px 32px;
+            border-radius: 12px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .cta-primary {
+            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+            color: white;
+            border: 1px solid #3b82f6;
+            box-shadow: 0 8px 24px rgba(59, 130, 246, 0.3);
+        }
+
+        .cta-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 32px rgba(59, 130, 246, 0.4);
+        }
+
+        .cta-secondary {
+            background: transparent;
+            color: #3b82f6;
+            border: 1px solid #3b82f6;
+        }
+
+        .cta-secondary:hover {
+            background: rgba(59, 130, 246, 0.1);
+            transform: translateY(-2px);
+        }
+
+        /* Main Content */
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 32px;
+            margin-bottom: 40px;
+        }
+
+        .card {
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(59, 130, 246, 0.2);
             border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
-            margin-bottom: 30px;
-            animation: slideDown 0.5s ease;
+            padding: 32px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
         }
 
-        @keyframes slideDown {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
+        .card:hover {
+            border-color: rgba(59, 130, 246, 0.4);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
         }
 
-        h1 {
-            color: #667eea;
-            font-size: 2.5em;
-            margin-bottom: 10px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        .card h2 {
+            color: #f8fafc;
+            font-size: 1.5em;
+            font-weight: 700;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .card h2::before {
+            content: '⬆️';
+            font-size: 0.8em;
+        }
+
+        .results-section h2::before {
+            content: '📊';
+        }
+
+        /* Upload Area */
+        .upload-area {
+            border: 2px dashed rgba(59, 130, 246, 0.4);
+            border-radius: 16px;
+            padding: 48px;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.05), rgba(6, 182, 212, 0.05));
+            position: relative;
+            overflow: hidden;
+        }
+
+        .upload-area::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .upload-area:hover {
+            border-color: #3b82f6;
+            background: rgba(59, 130, 246, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .upload-area:hover::before {
+            left: 100%;
+        }
+
+        .upload-area.dragover {
+            background: rgba(59, 130, 246, 0.15);
+            border-color: #06b6d4;
+            transform: scale(1.02);
+        }
+
+        .upload-icon {
+            font-size: 3.5em;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #3b82f6, #06b6d4);
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
-        .subtitle {
-            color: #666;
+        .upload-text {
+            color: #e2e8f0;
             font-size: 1.1em;
+            margin-bottom: 16px;
         }
 
-        .main-content {
-            display: grid;
-            grid-template-columns: 1fr 2fr;
-            gap: 20px;
-            margin-bottom: 30px;
-        }
-
-        .upload-section, .results-section {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 30px;
-            border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
-            animation: fadeIn 0.6s ease;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        .upload-area {
-            border: 3px dashed #667eea;
-            border-radius: 15px;
-            padding: 40px;
-            text-align: center;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.05), rgba(118, 75, 162, 0.05));
-        }
-
-        .upload-area:hover {
-            border-color: #764ba2;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.2);
-        }
-
-        .upload-area.dragover {
-            background: rgba(102, 126, 234, 0.1);
-            border-color: #764ba2;
-        }
-
-        .upload-icon {
-            font-size: 3em;
-            color: #667eea;
-            margin-bottom: 20px;
+        .upload-subtext {
+            color: #64748b;
+            font-size: 0.9em;
+            margin: 16px 0;
         }
 
         .file-input {
@@ -107,183 +279,343 @@
         }
 
         .btn {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
             color: white;
-            border: none;
-            padding: 12px 30px;
+            border: 1px solid #3b82f6;
+            padding: 12px 28px;
             font-size: 1em;
-            border-radius: 25px;
+            font-weight: 600;
+            border-radius: 10px;
             cursor: pointer;
             transition: all 0.3s ease;
-            margin: 10px;
-            display: inline-block;
-            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 16px rgba(59, 130, 246, 0.2);
         }
 
         .btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+            box-shadow: 0 6px 24px rgba(59, 130, 246, 0.3);
         }
 
         .btn:disabled {
             opacity: 0.5;
             cursor: not-allowed;
             transform: none;
+            box-shadow: none;
         }
 
-        .model-info {
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+        .btn-danger {
+            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+            border-color: #ef4444;
+            box-shadow: 0 4px 16px rgba(239, 68, 68, 0.2);
+        }
+
+        .btn-danger:hover {
+            box-shadow: 0 6px 24px rgba(239, 68, 68, 0.3);
+        }
+
+        /* File Info */
+        .file-info, .sequence-info {
+            background: rgba(59, 130, 246, 0.1);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            border-radius: 12px;
             padding: 20px;
-            border-radius: 10px;
             margin-top: 20px;
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .file-info p, .sequence-info p {
+            margin-bottom: 8px;
+            color: #e2e8f0;
+        }
+
+        .file-info strong, .sequence-info strong {
+            color: #3b82f6;
+        }
+
+        /* Sequence stats grid for multiple sequences */
+        .sequence-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 12px;
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px solid rgba(59, 130, 246, 0.2);
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 8px;
+            background: rgba(15, 23, 42, 0.4);
+            border-radius: 8px;
+        }
+
+        .stat-value {
+            font-weight: 700;
+            color: #3b82f6;
+            font-size: 1.1em;
+        }
+
+        .stat-label {
+            font-size: 0.8em;
+            color: #94a3b8;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* Model Info */
+        .model-info {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(6, 182, 212, 0.1));
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            border-radius: 16px;
+            padding: 24px;
+            margin-top: 24px;
+        }
+
+        .model-info h3 {
+            color: #f8fafc;
+            font-size: 1.2em;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .model-info h3::before {
+            content: '🤖';
+            font-size: 0.9em;
         }
 
         .info-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
-            margin-top: 15px;
+            gap: 16px;
         }
 
         .info-item {
-            padding: 10px;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            border-radius: 12px;
+            padding: 16px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .info-item:hover {
+            border-color: rgba(59, 130, 246, 0.4);
+            transform: translateY(-2px);
         }
 
         .info-label {
+            color: #94a3b8;
+            font-size: 0.85em;
             font-weight: 600;
-            color: #667eea;
-            font-size: 0.9em;
-            margin-bottom: 5px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 8px;
         }
 
         .info-value {
-            font-size: 1.2em;
-            color: #333;
+            color: #3b82f6;
+            font-size: 1.4em;
+            font-weight: 700;
         }
 
+        /* Results Section */
         .results-container {
             display: none;
+            animation: fadeIn 0.6s ease;
         }
 
         .results-container.active {
             display: block;
-            animation: slideIn 0.5s ease;
         }
 
-        @keyframes slideIn {
-            from { opacity: 0; transform: translateX(20px); }
-            to { opacity: 1; transform: translateX(0); }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
+        /* Tabs */
         .tabs {
             display: flex;
-            gap: 10px;
-            margin-bottom: 20px;
-            border-bottom: 2px solid #e0e0e0;
+            gap: 4px;
+            margin-bottom: 24px;
+            background: rgba(15, 23, 42, 0.8);
+            border-radius: 12px;
+            padding: 4px;
+            border: 1px solid rgba(59, 130, 246, 0.2);
         }
 
         .tab {
-            padding: 10px 20px;
+            flex: 1;
+            padding: 12px 16px;
             background: transparent;
             border: none;
-            color: #666;
+            color: #94a3b8;
             cursor: pointer;
             transition: all 0.3s ease;
-            font-size: 1em;
-            position: relative;
+            font-weight: 600;
+            border-radius: 8px;
         }
 
         .tab:hover {
-            color: #667eea;
+            color: #e2e8f0;
+            background: rgba(59, 130, 246, 0.1);
         }
 
         .tab.active {
-            color: #667eea;
-            font-weight: 600;
-        }
-
-        .tab.active::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            right: 0;
-            height: 2px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+            color: white;
+            box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
         }
 
         .tab-content {
             display: none;
-            animation: fadeIn 0.3s ease;
         }
 
         .tab-content.active {
             display: block;
+            animation: fadeIn 0.3s ease;
         }
 
+        /* Metrics Grid */
         .metrics-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-            margin-bottom: 20px;
+            gap: 20px;
+            margin-bottom: 32px;
         }
 
         .metric-card {
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
-            padding: 20px;
-            border-radius: 10px;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(6, 182, 212, 0.1));
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            border-radius: 16px;
+            padding: 24px;
             text-align: center;
-            transition: transform 0.3s ease;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .metric-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(135deg, #3b82f6, #06b6d4);
         }
 
         .metric-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.2);
+            transform: translateY(-4px);
+            border-color: rgba(59, 130, 246, 0.4);
+            box-shadow: 0 8px 32px rgba(59, 130, 246, 0.2);
         }
 
         .metric-value {
-            font-size: 2em;
-            font-weight: bold;
-            color: #667eea;
+            font-size: 2.5em;
+            font-weight: 800;
+            background: linear-gradient(135deg, #3b82f6, #06b6d4);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 8px;
         }
 
         .metric-label {
-            color: #666;
-            margin-top: 5px;
+            color: #94a3b8;
             font-size: 0.9em;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
         }
 
+        /* Chart Container */
         .chart-container {
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
+            background: rgba(15, 23, 42, 0.8);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            border-radius: 16px;
+            padding: 24px;
             margin: 20px 0;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            backdrop-filter: blur(20px);
+            height: 450px;
+            position: relative;
         }
 
+        .chart-container h3 {
+            color: #f8fafc;
+            font-size: 1.3em;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .chart-container h3::before {
+            content: '📊';
+            font-size: 0.8em;
+        }
+
+        .chart-wrapper {
+            position: relative;
+            height: 350px;
+            width: 100%;
+        }
+
+        #abundanceChart {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100% !important;
+            height: 100% !important;
+        }
+
+        /* Abundance List */
         .abundance-list {
-            max-height: 400px;
+            max-height: 500px;
             overflow-y: auto;
+            scrollbar-width: thin;
+            scrollbar-color: rgba(59, 130, 246, 0.5) transparent;
+        }
+
+        .abundance-list::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .abundance-list::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .abundance-list::-webkit-scrollbar-thumb {
+            background: rgba(59, 130, 246, 0.5);
+            border-radius: 3px;
         }
 
         .abundance-item {
-            background: white;
-            padding: 15px;
-            margin-bottom: 10px;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 16px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            transition: transform 0.3s ease;
+            transition: all 0.3s ease;
         }
 
         .abundance-item:hover {
-            transform: translateX(5px);
-            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.2);
+            transform: translateX(8px);
+            border-color: rgba(59, 130, 246, 0.4);
+            box-shadow: 0 4px 16px rgba(59, 130, 246, 0.15);
         }
 
         .abundance-info {
@@ -291,52 +623,59 @@
         }
 
         .abundance-name {
-            font-weight: 600;
-            color: #333;
-            margin-bottom: 5px;
+            font-weight: 700;
+            color: #f8fafc;
+            margin-bottom: 8px;
+            font-size: 1.1em;
         }
 
         .abundance-stats {
             display: flex;
-            gap: 20px;
+            gap: 24px;
             font-size: 0.9em;
-            color: #666;
+            color: #94a3b8;
         }
 
         .abundance-bar {
             width: 200px;
-            height: 20px;
-            background: #f0f0f0;
-            border-radius: 10px;
+            height: 8px;
+            background: rgba(30, 41, 59, 0.8);
+            border-radius: 4px;
             overflow: hidden;
             position: relative;
+            margin: 0 16px;
         }
 
         .abundance-fill {
             height: 100%;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            transition: width 0.5s ease;
+            background: linear-gradient(135deg, #3b82f6 0%, #06b6d4 100%);
+            transition: width 0.8s ease;
+            border-radius: 4px;
         }
 
+        /* Action Badges */
         .action-badge {
-            padding: 4px 12px;
-            border-radius: 12px;
-            font-size: 0.85em;
-            font-weight: 600;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.75em;
+            font-weight: 700;
             text-transform: uppercase;
+            letter-spacing: 0.05em;
         }
 
         .action-keep { background: #10b981; color: white; }
         .action-exclude { background: #ef4444; color: white; }
         .action-review { background: #f59e0b; color: white; }
-        .action-highlight_as_novel { background: #3b82f6; color: white; }
+        .action-highlight_as_novel { background: #8b5cf6; color: white; }
         .action-unknown { background: #6b7280; color: white; }
 
+        /* Table */
         .table-wrapper {
-            overflow-x: auto;
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            background: rgba(15, 23, 42, 0.8);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            border-radius: 16px;
+            overflow: hidden;
+            backdrop-filter: blur(20px);
         }
 
         table {
@@ -345,32 +684,39 @@
         }
 
         th {
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
-            padding: 12px;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(6, 182, 212, 0.2));
+            padding: 16px;
             text-align: left;
-            font-weight: 600;
-            color: #333;
+            font-weight: 700;
+            color: #f8fafc;
+            font-size: 0.9em;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
             position: sticky;
             top: 0;
+            z-index: 1;
         }
 
         td {
-            padding: 10px 12px;
-            border-bottom: 1px solid #e0e0e0;
+            padding: 16px;
+            border-bottom: 1px solid rgba(59, 130, 246, 0.1);
+            color: #e2e8f0;
         }
 
         tr:hover {
-            background: rgba(102, 126, 234, 0.05);
+            background: rgba(59, 130, 246, 0.05);
         }
 
+        /* Confidence Bar */
         .confidence-bar {
-            width: 100px;
+            width: 80px;
             height: 6px;
-            background: #f0f0f0;
+            background: rgba(30, 41, 59, 0.8);
             border-radius: 3px;
             overflow: hidden;
             display: inline-block;
             vertical-align: middle;
+            margin-left: 8px;
         }
 
         .confidence-fill {
@@ -378,19 +724,20 @@
             background: linear-gradient(135deg, #10b981 0%, #34d399 100%);
         }
 
+        /* Loading */
         .loading {
             text-align: center;
-            padding: 40px;
+            padding: 60px;
         }
 
         .spinner {
-            border: 3px solid #f0f0f0;
-            border-top: 3px solid #667eea;
+            border: 3px solid rgba(59, 130, 246, 0.2);
+            border-top: 3px solid #3b82f6;
             border-radius: 50%;
-            width: 40px;
-            height: 40px;
+            width: 50px;
+            height: 50px;
             animation: spin 1s linear infinite;
-            margin: 0 auto 20px;
+            margin: 0 auto 24px;
         }
 
         @keyframes spin {
@@ -398,27 +745,65 @@
             100% { transform: rotate(360deg); }
         }
 
+        .loading p {
+            color: #94a3b8;
+            font-size: 1.1em;
+        }
+
+        /* Messages */
         .error-message {
-            background: #fee;
-            color: #c00;
-            padding: 15px;
-            border-radius: 10px;
+            background: linear-gradient(135deg, rgba(239, 68, 68, 0.1), rgba(220, 38, 38, 0.1));
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            color: #fca5a5;
+            padding: 20px;
+            border-radius: 12px;
             margin: 20px 0;
-            border-left: 4px solid #c00;
+            backdrop-filter: blur(20px);
         }
 
         .success-message {
-            background: #d4edda;
-            color: #155724;
-            padding: 15px;
-            border-radius: 10px;
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(5, 150, 105, 0.1));
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            color: #6ee7b7;
+            padding: 20px;
+            border-radius: 12px;
             margin: 20px 0;
-            border-left: 4px solid #28a745;
+            backdrop-filter: blur(20px);
+        }
+
+        /* Download Section */
+        .download-section {
+            text-align: center;
+            padding: 24px;
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            border-radius: 16px;
+            margin-top: 24px;
+            backdrop-filter: blur(20px);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-links {
+                display: none;
+            }
         }
 
         @media (max-width: 768px) {
-            .main-content {
-                grid-template-columns: 1fr;
+            .container {
+                padding: 16px;
+            }
+            
+            .nav-bar {
+                padding: 12px 16px;
+            }
+            
+            .card {
+                padding: 20px;
             }
             
             .metrics-grid {
@@ -428,32 +813,120 @@
             .abundance-bar {
                 width: 100px;
             }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .abundance-item {
+                flex-direction: column;
+                gap: 16px;
+                align-items: flex-start;
+            }
+            
+            .abundance-bar {
+                width: 100%;
+            }
+
+            .chart-container {
+                height: 300px;
+            }
+
+            .chart-wrapper {
+                height: 220px;
+            }
+
+            .sequence-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Navigation -->
     <div class="container">
+        <nav class="nav-bar">
+            <div class="nav-brand">DeepSea eDNA Explorer</div>
+            <div class="nav-links">
+                <a href="#" class="nav-link active">Home</a>
+                <a href="https://github.com/Codymwon/eDNA-Analysis-Platform" class="nav-link">Download</a>
+            </div>
+        </nav>
+
+        <!-- Header -->
         <header>
-            <h1>🧬 eDNA Biodiversity Analysis Platform</h1>
-            <p class="subtitle">AI-Powered Deep-Sea Taxonomy Identification from Environmental DNA</p>
+            <h1 class="main-title">Deep-Sea eDNA<br>Biodiversity Explorer</h1>
+            <p class="subtitle">Revolutionary AI-driven platform using Zonal HNSW algorithm to identify taxonomy and assess biodiversity from environmental DNA datasets. Discover the unknown depths of marine life with unprecedented speed and accuracy.</p>
+            
+            <div class="cta-buttons">
+                <a href="#upload" class="cta-primary">
+                    <span>⬆</span> Upload eDNA Sample
+                </a>
+            </div>
         </header>
 
+        <!-- Main Content -->
         <div class="main-content">
-            <div class="upload-section">
+            <!-- Upload Section -->
+            <div class="card upload-section" id="upload">
                 <h2>Upload FASTA File</h2>
                 <div class="upload-area" id="uploadArea">
                     <div class="upload-icon">📁</div>
-                    <p>Drag & drop your FASTA file here</p>
-                    <p style="margin: 15px 0; color: #999;">or</p>
+                    <p class="upload-text">Drag & drop your FASTA file here</p>
+                    <p class="upload-subtext">or</p>
                     <button class="btn">Browse Files</button>
                     <input type="file" id="fileInput" class="file-input" accept=".fasta,.fa,.fna">
                 </div>
                 
-                <div id="fileInfo" style="display: none; margin-top: 20px;">
+                <!-- Sequence Input Section -->
+                <div class="sequence-input-section" style="margin-top: 24px;">
+                    <h3 style="color: #f8fafc; font-size: 1.1em; margin-bottom: 16px; display: flex; align-items: center; gap: 8px;">
+                        <span>✏️</span> Or paste FASTA sequences:
+                    </h3>
+                    <textarea 
+                        id="sequenceTextArea" 
+                        placeholder="Paste your FASTA sequences here (multiple sequences supported):
+
+>sequence1
+ATCGATCGATCG...
+>sequence2
+GCTAGCTAGCTA...
+>sequence3
+TTGGAACCTTGG..." 
+                        style="width: 100%; 
+                               height: 160px; 
+                               background: rgba(15, 23, 42, 0.6); 
+                               border: 1px solid rgba(59, 130, 246, 0.2); 
+                               border-radius: 8px; 
+                               padding: 12px; 
+                               color: #e2e8f0; 
+                               font-family: 'Courier New', monospace; 
+                               font-size: 0.9em; 
+                               resize: vertical;
+                               transition: all 0.3s ease;"
+                        onkeyup="handleSequenceInput()"
+                        onfocus="this.style.borderColor='#3b82f6'"
+                        onblur="this.style.borderColor='rgba(59, 130, 246, 0.2)'">
+                    </textarea>
+                    <div id="sequenceInfo" class="sequence-info" style="display: none;">
+                        <p><strong>Total sequences:</strong> <span id="sequenceCount">0</span></p>
+                        <p><strong>Format:</strong> <span id="sequenceFormat">-</span></p>
+                        <div class="sequence-stats" id="sequenceStats"></div>
+                        <div style="margin-top: 16px; display: flex; gap: 12px;">
+                            <button id="processSeqBtn" class="btn">Process Sequences</button>
+                            <button id="clearSeqBtn" class="btn btn-danger">Clear</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="fileInfo" class="file-info" style="display: none;">
                     <p><strong>Selected file:</strong> <span id="fileName"></span></p>
                     <p><strong>Size:</strong> <span id="fileSize"></span></p>
-                    <button id="processBtn" class="btn">🚀 Process File</button>
-                    <button id="clearBtn" class="btn" style="background: #ef4444;">Clear</button>
+                    <div style="margin-top: 16px; display: flex; gap: 12px;">
+                        <button id="processBtn" class="btn">Process File</button>
+                        <button id="clearBtn" class="btn btn-danger">Clear</button>
+                    </div>
                 </div>
 
                 <div class="model-info">
@@ -479,12 +952,13 @@
                 </div>
             </div>
 
-            <div class="results-section">
+            <!-- Results Section -->
+            <div class="card results-section">
                 <h2>Analysis Results</h2>
                 
                 <div id="loadingDiv" class="loading" style="display: none;">
                     <div class="spinner"></div>
-                    <p>Processing your FASTA file...</p>
+                    <p>Processing your FASTA sequences...</p>
                 </div>
 
                 <div id="errorDiv" class="error-message" style="display: none;"></div>
@@ -522,7 +996,9 @@
                         
                         <div class="chart-container">
                             <h3>Cluster Distribution</h3>
-                            <canvas id="abundanceChart"></canvas>
+                            <div class="chart-wrapper">
+                                <canvas id="abundanceChart"></canvas>
+                            </div>
                         </div>
                     </div>
 
@@ -552,9 +1028,12 @@
                     </div>
                 </div>
 
-                <div id="downloadSection" style="display: none; margin-top: 20px; text-align: center;">
-                    <button id="downloadBtn" class="btn">💾 Download Results (JSON)</button>
-                    <button id="downloadCSVBtn" class="btn">📊 Download Results (CSV)</button>
+                <div id="downloadSection" class="download-section" style="display: none;">
+                    <h3 style="color: #f8fafc; margin-bottom: 16px;">Download Results</h3>
+                    <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+                        <button id="downloadBtn" class="btn">📄 Download JSON</button>
+                        <button id="downloadCSVBtn" class="btn">📊 Download CSV</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -571,11 +1050,22 @@
             setupEventListeners();
         });
 
+        // Handle window resize for chart responsiveness
+        window.addEventListener('resize', function() {
+            if (abundanceChart) {
+                setTimeout(() => {
+                    abundanceChart.resize();
+                }, 100);
+            }
+        });
+
         function setupEventListeners() {
             const uploadArea = document.getElementById('uploadArea');
             const fileInput = document.getElementById('fileInput');
             const processBtn = document.getElementById('processBtn');
             const clearBtn = document.getElementById('clearBtn');
+            const processSeqBtn = document.getElementById('processSeqBtn');
+            const clearSeqBtn = document.getElementById('clearSeqBtn');
             const downloadBtn = document.getElementById('downloadBtn');
             const downloadCSVBtn = document.getElementById('downloadCSVBtn');
 
@@ -603,6 +1093,8 @@
 
             processBtn.addEventListener('click', processFile);
             clearBtn.addEventListener('click', clearFile);
+            processSeqBtn.addEventListener('click', processSequences);
+            clearSeqBtn.addEventListener('click', clearSequence);
             downloadBtn.addEventListener('click', downloadResults);
             downloadCSVBtn.addEventListener('click', downloadCSV);
 
@@ -625,6 +1117,9 @@
                 return;
             }
 
+            // Clear sequence input if file is selected
+            clearSequence();
+
             document.getElementById('fileName').textContent = file.name;
             document.getElementById('fileSize').textContent = formatFileSize(file.size);
             document.getElementById('fileInfo').style.display = 'block';
@@ -636,6 +1131,116 @@
             document.getElementById('fileInput').value = '';
             document.getElementById('fileInfo').style.display = 'none';
             window.selectedFile = null;
+        }
+
+        function handleSequenceInput() {
+            const textArea = document.getElementById('sequenceTextArea');
+            const sequenceText = textArea.value.trim();
+            
+            if (sequenceText.length > 0) {
+                // Clear file selection if sequence is entered
+                clearFile();
+                
+                // Parse and validate multiple sequences
+                const sequenceAnalysis = parseMultipleSequences(sequenceText);
+                
+                document.getElementById('sequenceCount').textContent = sequenceAnalysis.count;
+                document.getElementById('sequenceFormat').textContent = sequenceAnalysis.isValid ? 'Valid FASTA' : 'Invalid format';
+                
+                // Update sequence stats
+                updateSequenceStats(sequenceAnalysis);
+                
+                document.getElementById('sequenceInfo').style.display = 'block';
+                
+                window.selectedSequences = sequenceText;
+            } else {
+                document.getElementById('sequenceInfo').style.display = 'none';
+                window.selectedSequences = null;
+            }
+        }
+
+        function parseMultipleSequences(text) {
+            const lines = text.split('\n').map(line => line.trim()).filter(line => line.length > 0);
+            let sequences = [];
+            let currentSequence = null;
+            let isValid = true;
+            
+            for (let line of lines) {
+                if (line.startsWith('>')) {
+                    // New sequence header
+                    if (currentSequence) {
+                        sequences.push(currentSequence);
+                    }
+                    currentSequence = {
+                        header: line,
+                        sequence: '',
+                        length: 0
+                    };
+                } else if (currentSequence) {
+                    // Sequence data
+                    const cleanLine = line.replace(/\s/g, '').toUpperCase();
+                    if (!/^[ATCGN]*$/.test(cleanLine)) {
+                        isValid = false;
+                    }
+                    currentSequence.sequence += cleanLine;
+                    currentSequence.length = currentSequence.sequence.length;
+                }
+            }
+            
+            // Add last sequence
+            if (currentSequence) {
+                sequences.push(currentSequence);
+            }
+            
+            // Validate that we have at least one sequence with data
+            const validSequences = sequences.filter(seq => seq.length > 0);
+            if (validSequences.length === 0) {
+                isValid = false;
+            }
+            
+            return {
+                count: validSequences.length,
+                sequences: validSequences,
+                isValid: isValid && validSequences.length > 0,
+                totalLength: validSequences.reduce((sum, seq) => sum + seq.length, 0),
+                averageLength: validSequences.length > 0 ? Math.round(validSequences.reduce((sum, seq) => sum + seq.length, 0) / validSequences.length) : 0,
+                minLength: validSequences.length > 0 ? Math.min(...validSequences.map(seq => seq.length)) : 0,
+                maxLength: validSequences.length > 0 ? Math.max(...validSequences.map(seq => seq.length)) : 0
+            };
+        }
+
+        function updateSequenceStats(analysis) {
+            const statsContainer = document.getElementById('sequenceStats');
+            
+            if (analysis.count > 0) {
+                statsContainer.innerHTML = `
+                    <div class="stat-item">
+                        <div class="stat-value">${analysis.totalLength}</div>
+                        <div class="stat-label">Total BP</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">${analysis.averageLength}</div>
+                        <div class="stat-label">Avg Length</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">${analysis.minLength}</div>
+                        <div class="stat-label">Min Length</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">${analysis.maxLength}</div>
+                        <div class="stat-label">Max Length</div>
+                    </div>
+                `;
+                statsContainer.style.display = 'grid';
+            } else {
+                statsContainer.style.display = 'none';
+            }
+        }
+
+        function clearSequence() {
+            document.getElementById('sequenceTextArea').value = '';
+            document.getElementById('sequenceInfo').style.display = 'none';
+            window.selectedSequences = null;
         }
 
         function formatFileSize(bytes) {
@@ -662,8 +1267,45 @@
                     document.getElementById('modelStatus').style.color = '#ef4444';
                 }
             } catch (error) {
-                document.getElementById('modelStatus').textContent = '❌ Offline';
-                document.getElementById('modelStatus').style.color = '#ef4444';
+                document.getElementById('modelStatus').textContent = '⚠️ Offline';
+                document.getElementById('modelStatus').style.color = '#f59e0b';
+            }
+        }
+
+        async function processSequences() {
+            if (!window.selectedSequences) {
+                showError('Please enter sequences first');
+                return;
+            }
+
+            const formData = new FormData();
+            formData.append('sequence_text', window.selectedSequences);
+
+            document.getElementById('loadingDiv').style.display = 'block';
+            document.getElementById('resultsContainer').classList.remove('active');
+            document.getElementById('errorDiv').style.display = 'none';
+            document.getElementById('processSeqBtn').disabled = true;
+
+            try {
+                const response = await fetch('/api/upload', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    currentResults = data;
+                    displayResults(data);
+                    document.getElementById('downloadSection').style.display = 'block';
+                } else {
+                    showError(data.error || 'Processing failed');
+                }
+            } catch (error) {
+                showError('Network error: ' + error.message);
+            } finally {
+                document.getElementById('loadingDiv').style.display = 'none';
+                document.getElementById('processSeqBtn').disabled = false;
             }
         }
 
@@ -708,6 +1350,8 @@
             // Display metrics
             document.getElementById('totalSequences').textContent = data.diversity_metrics.total_sequences;
             document.getElementById('uniqueClusters').textContent = data.diversity_metrics.unique_clusters;
+            document.getElementById('shannonDiversity').textContent = data.diversity_metrics.shannon_diversity.toFixed(3);
+            document.getElementById('simpsonDiversity').textContent = data.diversity_metrics.simpson_diversity.toFixed(3);
             document.getElementById('avgConfidence').textContent = (data.diversity_metrics.average_confidence * 100).toFixed(1) + '%';
 
             // Display abundance chart
@@ -729,12 +1373,20 @@
                 abundanceChart.destroy();
             }
 
-            const labels = abundanceData.map(d => d.annotation);
-            const counts = abundanceData.map(d => d.count);
-            const colors = abundanceData.map(d => getActionColor(d.action));
+            // Limit the number of items shown and sort by count
+            const maxItems = 15;
+            const sortedData = abundanceData.sort((a, b) => b.count - a.count).slice(0, maxItems);
+            
+            const labels = sortedData.map(d => {
+                // Truncate long labels
+                const label = d.annotation.length > 30 ? d.annotation.substring(0, 30) + '...' : d.annotation;
+                return label;
+            });
+            const counts = sortedData.map(d => d.count);
+            const colors = sortedData.map(d => getActionColor(d.action));
 
             abundanceChart = new Chart(ctx, {
-                type: 'bar',
+                type: sortedData.length > 10 ? 'doughnut' : 'bar',
                 data: {
                     labels: labels,
                     datasets: [{
@@ -742,7 +1394,9 @@
                         data: counts,
                         backgroundColor: colors,
                         borderColor: colors.map(c => c.replace('0.6', '1')),
-                        borderWidth: 2
+                        borderWidth: 2,
+                        borderRadius: sortedData.length <= 10 ? 8 : 0,
+                        borderSkipped: false
                     }]
                 },
                 options: {
@@ -750,27 +1404,109 @@
                     maintainAspectRatio: false,
                     plugins: {
                         legend: {
-                            display: false
+                            display: sortedData.length > 10,
+                            position: sortedData.length > 10 ? 'right' : 'top',
+                            labels: {
+                                color: '#94a3b8',
+                                usePointStyle: true,
+                                padding: 15,
+                                font: {
+                                    size: 11
+                                },
+                                generateLabels: function(chart) {
+                                    const data = chart.data;
+                                    if (data.labels.length && data.datasets.length) {
+                                        return data.labels.map((label, i) => {
+                                            const meta = chart.getDatasetMeta(0);
+                                            const style = meta.controller.getStyle(i);
+                                            const value = data.datasets[0].data[i];
+                                            const percentage = sortedData[i].percentage;
+                                            return {
+                                                text: `${label} (${value}, ${percentage}%)`,
+                                                fillStyle: style.backgroundColor,
+                                                strokeStyle: style.borderColor,
+                                                lineWidth: style.borderWidth,
+                                                pointStyle: 'circle',
+                                                hidden: isNaN(value) || meta.data[i].hidden,
+                                                index: i
+                                            };
+                                        });
+                                    }
+                                    return [];
+                                }
+                            }
                         },
                         tooltip: {
+                            backgroundColor: 'rgba(15, 23, 42, 0.95)',
+                            titleColor: '#f8fafc',
+                            bodyColor: '#e2e8f0',
+                            borderColor: '#3b82f6',
+                            borderWidth: 1,
                             callbacks: {
                                 afterLabel: function(context) {
-                                    const data = abundanceData[context.dataIndex];
+                                    const data = sortedData[context.dataIndex];
                                     return `Percentage: ${data.percentage}%\nAction: ${data.action}`;
                                 }
                             }
                         }
                     },
-                    scales: {
+                    scales: sortedData.length <= 10 ? {
+                        x: {
+                            ticks: {
+                                color: '#94a3b8',
+                                maxRotation: 45,
+                                minRotation: 0,
+                                font: {
+                                    size: 11
+                                }
+                            },
+                            grid: {
+                                color: 'rgba(59, 130, 246, 0.1)',
+                                drawBorder: false
+                            }
+                        },
                         y: {
                             beginAtZero: true,
                             ticks: {
-                                stepSize: 1
+                                stepSize: Math.max(1, Math.ceil(Math.max(...counts) / 10)),
+                                color: '#94a3b8',
+                                font: {
+                                    size: 11
+                                }
+                            },
+                            grid: {
+                                color: 'rgba(59, 130, 246, 0.1)',
+                                drawBorder: false
                             }
                         }
+                    } : {},
+                    layout: {
+                        padding: {
+                            top: 10,
+                            bottom: 10,
+                            left: 10,
+                            right: 10
+                        }
+                    },
+                    animation: {
+                        duration: 1000,
+                        easing: 'easeInOutCubic'
                     }
                 }
             });
+
+            // Add info text if data was truncated
+            if (abundanceData.length > maxItems) {
+                const chartContainer = document.querySelector('.chart-container');
+                let infoText = chartContainer.querySelector('.chart-info');
+                if (!infoText) {
+                    infoText = document.createElement('p');
+                    infoText.className = 'chart-info';
+                    infoText.style.cssText = 'color: #64748b; font-size: 0.85em; margin-top: 10px; text-align: center;';
+                    chartContainer.appendChild(infoText);
+                }
+                infoText.textContent = `Showing top ${maxItems} of ${abundanceData.length} taxa. Switch to bar chart view to see all data in the detailed results tab.`;
+            }
         }
 
         function displayAbundanceList(abundanceData) {
@@ -835,7 +1571,7 @@
             const colors = {
                 'keep': 'rgba(16, 185, 129, 0.6)',
                 'exclude': 'rgba(239, 68, 68, 0.6)',
-                'highlight_as_novel': 'rgba(59, 130, 246, 0.6)',
+                'highlight_as_novel': 'rgba(139, 92, 246, 0.6)',
                 'review': 'rgba(245, 158, 11, 0.6)',
                 'unknown': 'rgba(107, 114, 128, 0.6)'
             };

@@ -4,6 +4,7 @@ import pickle
 import shutil
 import datetime
 import traceback
+from Levenshtein import distance as lev_distance
 from pathlib import Path
 from collections import Counter
 from flask import Flask, request, jsonify, send_file, render_template
@@ -26,6 +27,8 @@ ALLOWED_EXTENSIONS = {'fasta', 'fa', 'fna'}
 
 # K-mer configuration
 KMER_SIZE = 6
+# max allowed mismatches for fuzzy match
+MAX_MISMATCH = 2  
 
 # Ensure directories exist
 os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
@@ -50,6 +53,31 @@ def load_models():
     except Exception as e:
         print(f"Error loading models: {str(e)}")
         return False
+    
+# Load reference database on startup
+REFERENCE_DB = os.path.join(app.config['MODELS_FOLDER'], 'reference_db.fasta')  # adjust path
+reference_sequences = {}
+
+
+def normalize_seq(seq):
+    """Uppercase and remove whitespace/newlines for exact matching."""
+    return str(seq).upper().replace("\n", "").replace("\r", "").replace(" ", "").strip()
+
+def load_reference_db(ref_fasta):
+    """Load reference DB with normalized sequences"""
+    global reference_sequences
+    reference_sequences = {}
+    if os.path.exists(ref_fasta):
+        for record in SeqIO.parse(ref_fasta, "fasta"):
+            record_id = record.id.split("|")[0]
+            species = record.id.split("|")[1] if "|" in record.id else "unknown_species"
+            seq_norm = normalize_seq(record.seq)
+            reference_sequences[seq_norm] = species
+        print(f"Loaded {len(reference_sequences)} sequences from reference DB")
+    else:
+        print("Reference DB not found!")
+
+load_reference_db(REFERENCE_DB)
 
 def allowed_file(filename):
     """Check if file extension is allowed"""
@@ -68,6 +96,7 @@ def compute_confidence(X, labels, kmeans_model):
     confidences = 1 - (distances / max_distance)
     return confidences
 
+'''
 def process_fasta(filepath):
     """Process FASTA file and return classification results"""
     try:
@@ -102,44 +131,45 @@ def process_fasta(filepath):
         
         # Prepare results
         results = []
-        for record, label, confidence in zip(seq_records, labels, confidences):
-            cluster_info = cluster_annotation.get(str(label), {})
-            if isinstance(cluster_info, dict):
-                annotation = cluster_info.get('annotation', f"Unknown_{label}")
-                action = cluster_info.get('action', 'unknown')
+        for i, (record, label, confidence) in enumerate(zip(seq_records, labels, confidences)):
+            annotation_obj = cluster_annotation.get(str(label), f"Unknown_{label}")
+            if isinstance(annotation_obj, dict):
+                annotation = annotation_obj.get("annotation", f"Unknown_{label}")
+                action = annotation_obj.get("action", "unknown")
             else:
-                annotation = cluster_info if cluster_info else f"Unknown_{label}"
-                action = 'unknown'
+                annotation = annotation_obj
+                action = "unknown"
 
             results.append({
-                'sequence_id': record['id'],
-                'sequence_length': record['length'],
-                'cluster': int(label),
-                'annotation': annotation,
-                'confidence': round(float(confidence), 4),
-                'action': action
+                "sequence_id": record["id"],
+                "sequence_length": record["length"],
+                "cluster": int(label),
+                "annotation": annotation,
+                "confidence": round(float(confidence), 4),
+                "action": action
             })
         
         # Calculate abundance summary
         label_counts = Counter(labels)
         abundance_summary = []
         for cluster_id, count in label_counts.items():
-            cluster_info = cluster_annotation.get(str(cluster_id), {})
-            if isinstance(cluster_info, dict):
-                annotation = cluster_info.get('annotation', f"Unknown_{cluster_id}")
-                action = cluster_info.get('action', 'unknown')
+            annotation_obj = cluster_annotation.get(str(cluster_id), f"Unknown_{cluster_id}")
+            if isinstance(annotation_obj, dict):
+                annotation = annotation_obj.get("annotation", f"Unknown_{cluster_id}")
+                action = annotation_obj.get("action", "unknown")
             else:
-                annotation = cluster_info if cluster_info else f"Unknown_{cluster_id}"
-                action = 'unknown'
-            
+                annotation = annotation_obj
+                action = "unknown"
+
             percentage = (count / len(sequences)) * 100
             abundance_summary.append({
-                'cluster': int(cluster_id),
-                'annotation': annotation,
-                'count': int(count),
-                'percentage': round(percentage, 2),
-                'action': action
+                "cluster": int(cluster_id),
+                "annotation": annotation,
+                "count": int(count),
+                "percentage": round(percentage, 2),
+                "action": action
             })
+
         
         # Sort abundance summary by count
         abundance_summary.sort(key=lambda x: x['count'], reverse=True)
@@ -163,6 +193,123 @@ def process_fasta(filepath):
         
     except Exception as e:
         return {'error': f'Processing error: {str(e)}', 'traceback': traceback.format_exc()}
+'''
+def find_closest_species(seq, ref_dict, max_mismatch=MAX_MISMATCH):
+    """Search reference DB: exact match first, then fuzzy matching"""
+    seq_norm = normalize_seq(seq)
+    
+    # Exact match
+    if seq_norm in ref_dict:
+        return ref_dict[seq_norm]
+    
+    # Fuzzy match (only sequences of same length)
+    for ref_seq, species in ref_dict.items():
+        if len(ref_seq) == len(seq_norm) and lev_distance(seq_norm, ref_seq) <= max_mismatch:
+            return species
+    
+    return None  # not found
+
+def process_fasta(filepath):
+    """Process sequences: reference DB first, then AI clustering"""
+    try:
+        sequences = []
+        seq_records = []
+
+        # Step 1: Read sequences from FASTA
+        for record in SeqIO.parse(filepath, "fasta"):
+            seq_norm = normalize_seq(record.seq)
+            if len(seq_norm) >= KMER_SIZE:
+                sequences.append(seq_norm)
+                seq_records.append({'id': record.id, 'length': len(seq_norm)})
+
+        if not sequences:
+            return {'error': 'No valid sequences found in file'}
+
+        results = []
+        kmers_list = []
+        ai_indices = []
+
+        # Step 2: Check reference DB
+        for i, seq in enumerate(sequences):
+            species = find_closest_species(seq, reference_sequences)
+            if species:
+                results.append({
+                    'sequence_id': seq_records[i]['id'],
+                    'sequence_length': seq_records[i]['length'],
+                    'cluster': None,
+                    'annotation': species,
+                    'confidence': 1.0,
+                    'action': 'known'
+                })
+            else:
+                kmers_list.append(seq_to_kmers(seq, KMER_SIZE))
+                ai_indices.append(i)
+
+        # Step 3: AI clustering for unknown sequences
+        if kmers_list:
+            X = vectorizer.transform(kmers_list)
+            labels = kmeans.predict(X)
+            confidences = compute_confidence(X, labels, kmeans)
+
+            for idx, label, conf in zip(ai_indices, labels, confidences):
+                record = seq_records[idx]
+                annotation_obj = cluster_annotation.get(str(label), f"Unknown_{label}")
+                if isinstance(annotation_obj, dict):
+                    annotation = annotation_obj.get("annotation", f"Unknown_{label}")
+                    action = annotation_obj.get("action", "unknown")
+                else:
+                    annotation = annotation_obj
+                    action = "unknown"
+
+                results.append({
+                    'sequence_id': record["id"],
+                    'sequence_length': record["length"],
+                    'cluster': int(label),
+                    'annotation': annotation,
+                    'confidence': round(float(conf), 4),
+                    'action': action
+                })
+
+        # Step 4: Abundance summary
+        label_counts = Counter([r['cluster'] for r in results if r['cluster'] is not None])
+        abundance_summary = []
+        for cluster_id, count in label_counts.items():
+            annotation_obj = cluster_annotation.get(str(cluster_id), f"Unknown_{cluster_id}")
+            if isinstance(annotation_obj, dict):
+                annotation = annotation_obj.get("annotation", f"Unknown_{cluster_id}")
+                action = annotation_obj.get("action", "unknown")
+            else:
+                annotation = annotation_obj
+                action = "unknown"
+            percentage = (count / len(sequences)) * 100
+            abundance_summary.append({
+                "cluster": int(cluster_id),
+                "annotation": annotation,
+                "count": int(count),
+                "percentage": round(percentage, 2),
+                "action": action
+            })
+        abundance_summary.sort(key=lambda x: x['count'], reverse=True)
+
+        # Step 5: Diversity metrics
+        diversity_metrics = {
+            'total_sequences': len(sequences),
+            'unique_clusters': len(label_counts),
+            'shannon_diversity': calculate_shannon_diversity(label_counts.values()),
+            'simpson_diversity': calculate_simpson_diversity(label_counts.values()),
+            'average_confidence': round(float(np.mean([r['confidence'] for r in results])), 4)
+        }
+
+        return {
+            'success': True,
+            'results': results,
+            'abundance_summary': abundance_summary,
+            'diversity_metrics': diversity_metrics,
+            'timestamp': datetime.datetime.now().isoformat()
+        }
+
+    except Exception as e:
+        return {'error': f'Processing error: {str(e)}'}
 
 def calculate_shannon_diversity(counts):
     """Calculate Shannon diversity index"""
@@ -197,46 +344,43 @@ def health_check():
         'models_loaded': vectorizer is not None and kmeans is not None,
         'timestamp': datetime.datetime.now().isoformat()
     })
-
 @app.route('/api/upload', methods=['POST'])
 def upload_file():
-    """Handle file upload and processing"""
     try:
-        # Check if file is present
-        if 'file' not in request.files:
-            return jsonify({'error': 'No file provided'}), 400
-        
-        file = request.files['file']
-        
-        if file.filename == '':
-            return jsonify({'error': 'No file selected'}), 400
-        
-        if not allowed_file(file.filename):
-            return jsonify({'error': 'Invalid file format. Only FASTA files are allowed'}), 400
-        
-        # Save uploaded file
-        filename = secure_filename(file.filename)
-        timestamp = datetime.datetime.now().strftime('%Y%m%d_%H%M%S')
-        filename = f"{timestamp}_{filename}"
-        filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
-        file.save(filepath)
-        
-        # Process the file
-        results = process_fasta(filepath)
-        
-        # Save results to file
+        file = request.files.get('file')
+        sequence_text = request.form.get('sequence_text')
+
+        if not file and not sequence_text:
+            return jsonify({'error': 'No file or sequence text provided'}), 400
+
+        # If a file is provided, save and process it
+        if file and file.filename != '':
+            if not allowed_file(file.filename):
+                return jsonify({'error': 'Invalid file format. Only FASTA files are allowed'}), 400
+            filename = secure_filename(file.filename)
+            timestamp = datetime.datetime.now().strftime('%Y%m%d_%H%M%S')
+            filename = f"{timestamp}_{filename}"
+            filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+            file.save(filepath)
+            results = process_fasta(filepath)
+        else:
+            # If sequence text is provided, save to a temporary FASTA file
+            timestamp = datetime.datetime.now().strftime('%Y%m%d_%H%M%S')
+            filename = f"{timestamp}_pasted_sequences.fasta"
+            filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+            with open(filepath, 'w') as f:
+                f.write(sequence_text)
+            results = process_fasta(filepath)
+
         if results.get('success'):
             output_filename = f"results_{timestamp}.json"
             output_path = os.path.join(app.config['OUTPUT_FOLDER'], output_filename)
             with open(output_path, 'w') as f:
                 json.dump(results, f, indent=2)
             results['output_file'] = output_filename
-        
-        # Clean up uploaded file (optional)
-        # os.remove(filepath)
-        
+
         return jsonify(results)
-        
+
     except Exception as e:
         return jsonify({'error': str(e), 'traceback': traceback.format_exc()}), 500
 
@@ -265,8 +409,16 @@ def get_model_info():
         'clusters': [
             {
                 'id': i,
-                'annotation': cluster_annotation.get(str(i), f"Cluster_{i}"),
-                'action': cluster_annotation.get(str(i), {}).get('action', 'unknown') if isinstance(cluster_annotation.get(str(i)), dict) else 'unknown'
+                'annotation': (
+                    cluster_annotation.get(str(i), {}).get("annotation", f"Cluster_{i}")
+                    if isinstance(cluster_annotation.get(str(i)), dict)
+                    else cluster_annotation.get(str(i), f"Cluster_{i}")
+                ),
+                'action': (
+                    cluster_annotation.get(str(i), {}).get("action", "unknown")
+                    if isinstance(cluster_annotation.get(str(i)), dict)
+                    else "unknown"
+                )
             }
             for i in range(kmeans.n_clusters)
         ]
